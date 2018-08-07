@@ -1,0 +1,34 @@
+# Codeception Test Suite Configuration
+
+# suite for functional (integration) tests.
+# emulate web requests and make application process them.
+# (tip: better to use with frameworks).
+
+# RUN `build` COMMAND AFTER ADDING/REMOVING MODULES.
+#basic/web/registration.php
+class_name: FunctionalTester
+modules:
+  enabled:
+    - Filesystem
+    - Yii2
+    - MultiDb
+  config:
+     MultiDb:
+       connections:
+         postgres:
+           dsn: 'pgsql:host=postgres;port=5432;dbname=sokolov-b2c'
+           user: 'developer'
+           password: 'developer'
+           primary: true
+           dump: ''
+           populate: true
+           cleanup: false
+           reconnect: false
+         mysql:
+           dsn: 'mysql:host=mariadb;port=3306;dbname=sokolov-b2c'
+           user: 'developer'
+           password: 'developer'
+           dump: ''
+           populate: true
+           cleanup: false
+           reconnect: false
